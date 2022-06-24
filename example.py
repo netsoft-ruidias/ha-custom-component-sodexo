@@ -7,8 +7,8 @@ async def main():
     async with aiohttp.ClientSession() as session:
         api = SodexoAPI(session)
 
-        username = input("Enter your username/nif...: ") or "269619437"
-        password = input("Enter your password.......: ") or "123Paratestes+"
+        username = input("Enter your username/nif...: ")
+        password = input("Enter your password.......: ")
 
         token = await api.login(username, password)
         details = await api.getAccountDetails(token)
