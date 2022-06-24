@@ -1,5 +1,5 @@
 """LIB to Sodexo."""
-from enum import Enum
+import enum
 from html.parser import HTMLParser
 
 def parse_html(html: str) -> str:
@@ -35,7 +35,7 @@ class HtmlParser(HTMLParser):
             self.data.append(data)
 
 
-class Countries(Enum):
+class Countries(enum.Enum):
     """List of Available Countries."""
 
     pt = "Portugal"
