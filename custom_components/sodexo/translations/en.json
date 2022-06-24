@@ -7,12 +7,12 @@
                 "description": "Please type your credentials",
                 "data": {
                     "country": "Country",
-                    "username": "Email",
+                    "username": "VAT Num.",
                     "password": "Password"
                 },
                 "data_description": {
                     "country": "Select the Country your card was issued",
-                    "username": "The email used to login in https://minhaconta.sodexobeneficios.pt/ portal",
+                    "username": "The VAT number used to login in https://minhaconta.sodexobeneficios.pt/ portal",
                     "password": "The password used to login in https://minhaconta.sodexobeneficios.pt/ portal"
                 }
             }
