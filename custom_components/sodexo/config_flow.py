@@ -19,10 +19,10 @@ _LOGGER.setLevel(logging.DEBUG)
 
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required('country'): cv.In({
+        vol.Required('country'): vol.In([
             COUNTRY_PT,
             COUNTRY_BR
-        }),
+        ]),
         vol.Required('username'): cv.string, 
         vol.Required('password'): cv.string,
     }
