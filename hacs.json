@@ -1,0 +1,7 @@
+{
+    "name": "Sodexo Card",
+    "country": "PT",
+    "domain": "sodexo",
+    "render_readme": true,
+    "iot_class": "Cloud Polling"
+}

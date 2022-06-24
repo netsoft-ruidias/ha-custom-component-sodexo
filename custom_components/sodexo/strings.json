@@ -1,0 +1,31 @@
+{
+    "title": "Sodexo meal card integration",
+    "config": {
+        "step": {
+            "user": {
+                "title": "Add Credentials",
+                "description": "Please type your credentials",
+                "data": {
+                    "country": "Country",
+                    "username": "Email",
+                    "password": "Password",
+                    "includeTransactions": "Include the transaction list?"
+                },
+                "data_description": {
+                    "country": "Select the Country your card was issued",
+                    "username": "The email used to login in https://minhaconta.sodexobeneficios.pt/ portal",
+                    "password": "The password used to login in https://minhaconta.sodexobeneficios.pt/ portal",
+                    "includeTransactions": "Include the transaction list"
+                }
+            }
+        },
+        "error": {
+            "auth": "Invalid credentials accessing https://minhaconta.sodexobeneficios.pt/ portal.",
+            "invalidCountry": "Invalid country or country not supported yet."
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single configuration of Sodexo is allowed.",
+            "already_configured": "Integration is already configured"
+        }
+    }
+}
