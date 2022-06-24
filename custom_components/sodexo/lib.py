@@ -35,13 +35,6 @@ class HtmlParser(HTMLParser):
             self.data.append(data)
 
 
-class Countries(enum.Enum):
-    """List of Available Countries."""
-
-    pt = "Portugal"
-    br = "Brazil"
-
-
 class AccountDetails:
     """Represents an Account Details."""
 

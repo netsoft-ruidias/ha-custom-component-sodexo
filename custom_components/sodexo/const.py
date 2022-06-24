@@ -1,3 +1,5 @@
+from typing import Dict
+
 DOMAIN = "sodexo"
 PLATFORM = "sensor"
 DOMAIN_DATA = f"{DOMAIN}_data"
@@ -7,3 +9,8 @@ UNIT_OF_MEASUREMENT = "€"
 
 LOGIN_URL = "https://login.sodexobeneficios.pt/login_processing.php"
 MINHACONTA_URL = "https://minhaconta.sodexobeneficios.pt/"
+
+COUNTRIES: Dict[str, str] = { 
+    "pt": "Portugal", 
+    "br": "Brasil" 
+} 

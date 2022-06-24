@@ -5,26 +5,22 @@ import logging
 import voluptuous as vol
 import async_timeout
 
+
 from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 
 from .api import SodexoAPI
-from .const import DOMAIN
-from .lib import Countries
+from .const import DOMAIN, COUNTRIES
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.DEBUG)
 
-LIST = [ 
-    { "pt": "Portugal" }, 
-    { "br": "Brasil" } 
-]
 
 DATA_SCHEMA = vol.Schema(
     {
         vol.Required("country", 
-                    default=list(LIST.keys())): cv.multi_select(LIST),
+            default=list(COUNTRIES.keys())): cv.multi_select(COUNTRIES),
         #vol.Required('country'): cv.enum(Countries),
         vol.Required('username'): cv.string, 
         vol.Required('password'): cv.string,

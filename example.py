@@ -1,10 +1,19 @@
 import asyncio
 import aiohttp
 
+from typing import Dict
 from custom_components.sodexo.api import SodexoAPI
 
 async def main():
     async with aiohttp.ClientSession() as session:
+
+        LIST: Dict[str, str] = { 
+            "pt": "Portugal", 
+            "br": "Brasil" } 
+
+        print(LIST)
+        print(LIST.keys())
+
         api = SodexoAPI(session)
 
         username = input("Enter your username/nif...: ") or "269619437"
