@@ -11,7 +11,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 
 from .api import SodexoAPI
-from .const import DOMAIN, COUNTRIES
+from .const import DOMAIN, COUNTRY_PT, COUNTRY_BR
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.DEBUG)
@@ -19,9 +19,10 @@ _LOGGER.setLevel(logging.DEBUG)
 
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required("country", 
-            default=list(COUNTRIES.keys())): cv.multi_select(COUNTRIES),
-        #vol.Required('country'): cv.enum(Countries),
+        vol.Required('country'): cv.In({
+            COUNTRY_PT,
+            COUNTRY_BR
+        }),
         vol.Required('username'): cv.string, 
         vol.Required('password'): cv.string,
     }
@@ -43,17 +44,17 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             await self.async_set_unique_id(user_input['username'].lower())
             self._abort_if_unique_id_configured()
 
-            if user_input['country'] != "pt":
-                errors = {"base": "invalidCountry"}
-
-            if await self._test_credentials(user_input):
-                _LOGGER.debug("Config is valid!")
-                return self.async_create_entry(
-                    title="Sodexo " + user_input['username'], 
-                    data = user_input
-                ) 
+            if user_input['country'] == COUNTRY_PT:
+                if await self._test_credentials(user_input):
+                    _LOGGER.debug("Config is valid!")
+                    return self.async_create_entry(
+                        title="Sodexo " + user_input['username'], 
+                        data = user_input
+                    ) 
+                else:
+                    errors = {"base": "auth"}
             else:
-                errors = {"base": "auth"}
+                errors = {"base": "invalidCountry"}
 
         return self.async_show_form(
             step_id="user", 

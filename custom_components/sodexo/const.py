@@ -10,6 +10,9 @@ UNIT_OF_MEASUREMENT = "€"
 LOGIN_URL = "https://login.sodexobeneficios.pt/login_processing.php"
 MINHACONTA_URL = "https://minhaconta.sodexobeneficios.pt/"
 
+COUNTRY_PT = "Portugal"
+COUNTRY_BR = "Brasil"
+
 COUNTRIES: Dict[str, str] = { 
     "pt": "Portugal", 
     "br": "Brasil" 
