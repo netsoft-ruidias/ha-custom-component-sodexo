@@ -16,9 +16,16 @@ from .lib import Countries
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.DEBUG)
 
+LIST = [ 
+    { "pt": "Portugal" }, 
+    { "br": "Brasil" } 
+]
+
 DATA_SCHEMA = vol.Schema(
-    { 
-        vol.Required('country'): cv.enum(Countries),
+    {
+        vol.Required("country", 
+                    default=list(LIST.keys())): cv.multi_select(LIST),
+        #vol.Required('country'): cv.enum(Countries),
         vol.Required('username'): cv.string, 
         vol.Required('password'): cv.string,
     }
