@@ -13,7 +13,7 @@
                 "data_description": {
                     "country": "Select the Country your card was issued",
                     "username": "O NIF usado para aceder ao portal https://minhaconta.sodexobeneficios.pt/",
-                    "password": "O Palavra Passe usada para aceder ao portal https://minhaconta.sodexobeneficios.pt/"
+                    "password": "A Palavra Passe usada para aceder ao portal https://minhaconta.sodexobeneficios.pt/"
                 }
             }
         },
