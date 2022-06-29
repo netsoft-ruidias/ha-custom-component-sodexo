@@ -8,14 +8,12 @@
                 "data": {
                     "country": "Country",
                     "username": "VAT Number",
-                    "password": "Password",
-                    "includeTransactions": "Include the transaction list?"
+                    "password": "Password"
                 },
                 "data_description": {
                     "country": "Select the Country your card was issued",
                     "username": "The VAT number used to login in https://minhaconta.sodexobeneficios.pt/ portal",
-                    "password": "The password used to login in https://minhaconta.sodexobeneficios.pt/ portal",
-                    "includeTransactions": "Include the transaction list"
+                    "password": "The password used to login in https://minhaconta.sodexobeneficios.pt/ portal"
                 }
             }
         },
