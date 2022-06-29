@@ -18,9 +18,9 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import SodexoAPI
 from .const import (
-    DOMAIN,
-    DEFAULT_ICON,
-    UNIT_OF_MEASUREMENT
+    DOMAIN, DEFAULT_ICON, UNIT_OF_MEASUREMENT,
+    CONF_COUNTRY, CONF_USERNAME, CONF_PASSWORD,
+    ATTRIBUTION
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -65,7 +65,7 @@ class SodexoSensor(SensorEntity):
     @property
     def unique_id(self) -> str:
         """Return the unique ID of the sensor."""
-        return f"{DOMAIN}-{self._config['username']}-{self._config['country']}".lower()
+        return f"{DOMAIN}-{self._config[CONF_USERNAME]}-{self._config[CONF_COUNTRY]}".lower()
 
     @property
     def available(self) -> bool:
@@ -94,6 +94,10 @@ class SodexoSensor(SensorEntity):
         return self._icon
 
     @property
+    def attribution(self):
+        return ATTRIBUTION
+
+    @property
     def extra_state_attributes(self) -> Dict[str, Any]:
         """Return the state attributes."""
         return {
@@ -105,8 +109,10 @@ class SodexoSensor(SensorEntity):
         api = self._api
         config = self._config
 
-        try:            
-            token = await api.login(config["username"], config["password"])
+        try:        
+            token = await api.login(
+                config[CONF_USERNAME], 
+                config[CONF_PASSWORD])
             if (token):
                 account = await api.getAccountDetails(token)
                 self._state = account.amount

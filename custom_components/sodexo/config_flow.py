@@ -11,20 +11,22 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 
 from .api import SodexoAPI
-from .const import DOMAIN, COUNTRY_PT, COUNTRY_BR
+from .const import (
+    DOMAIN, 
+    CONF_COUNTRIES, COUNTRY_PT, 
+    CONF_COUNTRY, CONF_USERNAME, CONF_PASSWORD
+)
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.DEBUG)
 
-
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required('country'): vol.In([
-            COUNTRY_PT,
-            COUNTRY_BR
-        ]),
-        vol.Required('username'): cv.string, 
-        vol.Required('password'): cv.string,
+        vol.Required(CONF_COUNTRY, default=COUNTRY_PT):  vol.All(
+            cv.ensure_list, [vol.In(CONF_COUNTRIES)]
+        ),
+        vol.Required(CONF_USERNAME): cv.string, 
+        vol.Required(CONF_PASSWORD): cv.string,
     }
 )
 
