@@ -22,11 +22,11 @@ _LOGGER.setLevel(logging.DEBUG)
 
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_COUNTRY, default=COUNTRY_PT):  vol.All(
-            cv.ensure_list, [vol.In(CONF_COUNTRIES)]
-        ),
         vol.Required(CONF_USERNAME): cv.string, 
         vol.Required(CONF_PASSWORD): cv.string,
+        vol.Optional(CONF_COUNTRY, default=COUNTRY_PT):  vol.All(
+            cv.ensure_list, [vol.In(CONF_COUNTRIES)]
+        )
     }
 )
 
