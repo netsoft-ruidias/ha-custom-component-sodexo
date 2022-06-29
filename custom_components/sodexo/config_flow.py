@@ -22,11 +22,8 @@ _LOGGER.setLevel(logging.DEBUG)
 
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_USERNAME): cv.string, 
-        vol.Required(CONF_PASSWORD): cv.string,
-        vol.Optional(CONF_COUNTRY, default=[]): vol.All(
-            cv.ensure_list, [vol.In(CONF_COUNTRIES)]
-        )
+        vol.Required(CONF_USERNAME): cv.string,
+        vol.Required(CONF_PASSWORD): cv.string
     }
 )
 
@@ -46,17 +43,14 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             await self.async_set_unique_id(user_input['username'].lower())
             self._abort_if_unique_id_configured()
 
-            if user_input['country'] == COUNTRY_PT:
-                if await self._test_credentials(user_input):
-                    _LOGGER.debug("Config is valid!")
-                    return self.async_create_entry(
-                        title="Sodexo " + user_input['username'], 
-                        data = user_input
-                    ) 
-                else:
-                    errors = {"base": "auth"}
+            if await self._test_credentials(user_input):
+                _LOGGER.debug("Config is valid!")
+                return self.async_create_entry(
+                    title="Sodexo " + user_input['username'], 
+                    data = user_input
+                ) 
             else:
-                errors = {"base": "invalidCountry"}
+                errors = {"base": "auth"}
 
         return self.async_show_form(
             step_id="user", 
