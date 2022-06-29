@@ -42,7 +42,7 @@ async def async_setup_entry(hass: HomeAssistant,
 
 
 class SodexoSensor(SensorEntity):
-    """Representation of a MyEdenred Card (Sensor)."""
+    """Representation of a Sodexo Card (Sensor)."""
 
     def __init__(self, api: SodexoAPI, config: Any):
         super().__init__()

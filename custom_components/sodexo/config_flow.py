@@ -1,4 +1,4 @@
-"""Config flow for myEdenred integration."""
+"""Config flow for Sodexo integration."""
 from __future__ import annotations
 
 import logging
