@@ -65,8 +65,7 @@ class SodexoSensor(SensorEntity):
     @property
     def unique_id(self) -> str:
         """Return the unique ID of the sensor."""
-        country = self._config[CONF_COUNTRY] | COUNTRY_PT
-        return f"{DOMAIN}-{self._config[CONF_USERNAME]}-{country}".lower()
+        return f"{DOMAIN}-{self._config[CONF_USERNAME]}-{COUNTRY_PT}".lower()
 
     @property
     def available(self) -> bool:
