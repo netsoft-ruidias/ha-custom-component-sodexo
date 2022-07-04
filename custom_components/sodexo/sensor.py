@@ -18,7 +18,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import SodexoAPI
 from .const import (
-    DOMAIN, DEFAULT_ICON, UNIT_OF_MEASUREMENT,
+    COUNTRY_PT, DOMAIN, DEFAULT_ICON, UNIT_OF_MEASUREMENT,
     CONF_COUNTRY, CONF_USERNAME, CONF_PASSWORD,
     ATTRIBUTION
 )
@@ -65,7 +65,8 @@ class SodexoSensor(SensorEntity):
     @property
     def unique_id(self) -> str:
         """Return the unique ID of the sensor."""
-        return f"{DOMAIN}-{self._config[CONF_USERNAME]}-{self._config[CONF_COUNTRY]}".lower()
+        country = self._config[CONF_COUNTRY] | COUNTRY_PT
+        return f"{DOMAIN}-{self._config[CONF_USERNAME]}-{country}".lower()
 
     @property
     def available(self) -> bool:
