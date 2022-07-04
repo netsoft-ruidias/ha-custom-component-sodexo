@@ -31,6 +31,28 @@ Assuming you have already installed and configured HACS, follow these steps:
 4. Enter your credentials
 5. Repeat the procedure as many times as desired to include other cards you may have
 
+## Sample Card
+
+This is a sample card that displays the balance, last sensor update and last available balance date.
+
+As a bonus, this sample also includes a `tap_action` to update the card's balance each time the card is pressed or clicked.
+
+```yaml
+type: entities
+entities:
+  - entity: sensor.sodexo_card
+    secondary_info: last-updated
+    tap_action:
+      action: call-service
+      service: homeassistant.update_entity
+      target:
+        entity_id: sensor.sodexo_card
+  - entity: sensor.sodexo_card
+    name: Updated
+    type: attribute
+    attribute: updated
+```
+
 # Legal notice
 This is a personal project and isn't in any way affiliated with, sponsored or endorsed by [Sodexo Portugal](https://www.sodexobeneficios.pt/).
 
