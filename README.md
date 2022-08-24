@@ -63,4 +63,4 @@ All product names, trademarks and registered trademarks in (the images in) this 
 Please, support my other integrations: 
 [Preços dos Combustivels](https://github.com/netsoft-ruidias/ha-custom-component-precoscombustiveis) | 
 [MyEdenred](https://github.com/netsoft-ruidias/ha-custom-component-myedenred) |
-[Sodexo](https://github.com/netsoft-ruidias/ha-custom-component-sodexo)
+[Coverflex](https://github.com/netsoft-ruidias/ha-custom-component-coverflex)
